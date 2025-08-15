@@ -1,0 +1,15 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <h2 class="m-0 text-white">Inventario</h2>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <button
+      pButton
+      label="Salir"
+      icon="pi pi-sign-out"
+      class="p-button-danger p-button-sm"
+      (click)="logout()">
+    </button>
+  </ng-template>
+</p-menubar>

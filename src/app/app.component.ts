@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { MenubarModule } from 'primeng/menubar';
+import {HeaderComponent} from './core/components/header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterModule, MenubarModule, HeaderComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'inventario-frontend';
+  items = [
+    { label: 'Productos', icon: 'pi pi-list', routerLink: '/products' },
+    { label: 'Salir', icon: 'pi pi-sign-out', command: () => this.logout() }
+  ];
+
+  logout() {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  }
 }

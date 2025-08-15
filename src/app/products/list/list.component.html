@@ -1,0 +1,55 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+
+<div class="mb-3">
+  <button pButton label="Nuevo Producto" icon="pi pi-plus" (click)="openForm()"></button>
+</div>
+
+<p-table [value]="products" [loading]="loading" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Imagen</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Fecha de creación</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr>
+      <td>
+        <img [src]="product.imagenUrl" alt="{{ product.nombre }}" width="80" height="80" style="object-fit: cover; border-radius: 4px;">
+      </td>
+      <td>{{ product.nombre }}</td>
+      <td>{{ product.descripcion }}</td>
+      <td>{{ product.fechaCreacion | date:'yyyy-MM-dd' }}</td>
+      <td>
+        <p-buttonGroup>
+          <button
+            pButton
+            pButtonIcon="pi pi-pencil"
+            class="p-button-sm p-button-warning p-button-icon-only"
+            (click)="openForm(product)">
+            Editar
+
+          </button>
+          <button
+            pButton
+            pButtonIcon="pi pi-trash"
+            class="p-button-sm p-button-danger p-button-icon-only"
+            (click)="deleteProduct(product.id)">
+            Eliminar
+
+          </button>
+        </p-buttonGroup>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<app-product-form
+  [visible]="formVisible"
+  [product]="selectedProduct"
+  (save)="saveProduct($event)"
+  (close)="formVisible = false"
+></app-product-form>
