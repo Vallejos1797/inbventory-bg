@@ -1,0 +1,24 @@
+<p-toast></p-toast>
+
+<div class="card w-96 mx-auto mt-10 p-6">
+  <h2 class="text-xl mb-4">Crear cuenta</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input type="text" pInputText formControlName="nombre" />
+    </div>
+
+    <div class="mb-3">
+      <label>Correo</label>
+      <input type="email" pInputText formControlName="email" />
+    </div>
+
+    <div class="mb-3">
+      <label>Contraseña</label>
+      <input type="password" pInputText formControlName="password" />
+    </div>
+
+    <button pButton label="Registrarme" type="submit" [loading]="loading"></button>
+  </form>
+</div>

@@ -28,4 +28,7 @@ export class ApiService {
   deleteProduct(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/Products/${id}`);
   }
+
+
+
 }
