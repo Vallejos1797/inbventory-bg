@@ -8,7 +8,7 @@ import { ToastModule } from 'primeng/toast';
 // import { ApiService } from '../../../core/services/api.service';
 import { Product } from '../../../../core/models/product.interface';
 import { ProductFormComponent } from '../form/form.component';
-import {ButtonGroup} from 'primeng/buttongroup';
+import { ButtonGroup } from 'primeng/buttongroup';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -33,12 +33,13 @@ export class ListComponent implements OnInit {
 
   formVisible = false;
   selectedProduct: Product | null = null;
+  baseClass: string = 'product';
 
   constructor(
     private api: ProductService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadProducts();
@@ -83,6 +84,8 @@ export class ListComponent implements OnInit {
   deleteProduct(id: number): void {
     this.confirmationService.confirm({
       message: '¿Estás seguro de eliminar este producto?',
+      acceptLabel: 'Sí',
+      rejectLabel: 'No',
       accept: () => {
         this.api.deleteProduct(id).subscribe({
           next: () => {

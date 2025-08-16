@@ -1,13 +1,52 @@
+$color-magenta: #D2006E;
+$color-white:   #FFFFFF;
+$color-blue:    #160F41;
+
 :host ::ng-deep .p-menubar {
-  background-color: #1f2937; // gris oscuro
-  border: none;
+  background: #0f172a;
+  border: 0;
+  border-radius: 12px;
+  padding: 8px 14px;
+  box-shadow: 0 6px 16px rgba(2, 6, 23, .25);
 }
 
-:host ::ng-deep .p-menubar .p-menuitem-link {
-  color: white !important;
+:host ::ng-deep .p-menubar .p-menubar-start h2 {
+  margin: 0 16px 0 0;
+  color: $color-white;
+  font-weight: 800;
+  letter-spacing: .2px;
 }
 
-h2 {
+:host ::ng-deep .p-menubar-root-list {
+  gap: 6px;
+}
+
+:host ::ng-deep .p-menubar .p-menuitem > .p-menuitem-content > .p-menuitem-link {
+  color: #e5e7eb !important;
+  padding: .5rem .75rem;
+  border-radius: 10px;
   font-weight: 600;
-  color: white;
+  transition: background .2s, color .2s, transform .2s;
+}
+
+:host ::ng-deep .p-menubar .p-menuitem > .p-menuitem-content > .p-menuitem-link:hover {
+  background: rgba(255,255,255,.08);
+  color: $color-white !important;
+  transform: translateY(-1px);
+}
+
+:host ::ng-deep .p-menubar .p-menuitem.is-active > .p-menuitem-content > .p-menuitem-link {
+  background: $color-blue;
+  color: $color-white !important;
+  box-shadow: 0 4px 12px rgba(22, 15, 65, .35);
+}
+
+:host ::ng-deep .p-menubar .p-menubar-end .p-button {
+  background: $color-magenta;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+
+  &:hover { background: darken($color-magenta, 6%); }
+  &:active { background: darken($color-magenta, 10%); }
 }

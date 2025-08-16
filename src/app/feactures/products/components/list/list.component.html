@@ -5,51 +5,51 @@
   <button pButton label="Nuevo Producto" icon="pi pi-plus" (click)="openForm()"></button>
 </div>
 
-<p-table [value]="products" [loading]="loading" responsiveLayout="scroll">
-  <ng-template pTemplate="header">
+<p-table class="{{baseClass}}__table" #dt2 [value]="products" dataKey="id" [rows]="10"
+  [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true">
+
+  <ng-template #header>
     <tr>
-      <th>Imagen</th>
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Fecha de creación</th>
-      <th>Acciones</th>
+      <th style="width:22%">Nombre</th>
+      <th style="width:38%">Descripción</th>
+      <th style="width:15%">F. de creación</th>
+      <th style="width:15%">Acciones</th>
+    </tr>
+
+
+    <tr>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-product>
+  <ng-template #body let-producto>
     <tr>
       <td>
-        <img [src]="product.imagenUrl" alt="{{ product.nombre }}" width="80" height="80" style="object-fit: cover; border-radius: 4px;">
+        {{ producto.nombre }}
       </td>
-      <td>{{ product.nombre }}</td>
-      <td>{{ product.descripcion }}</td>
-      <td>{{ product.fechaCreacion | date:'yyyy-MM-dd' }}</td>
       <td>
-        <p-buttonGroup>
-          <button
-            pButton
-            pButtonIcon="pi pi-pencil"
-            class="p-button-sm p-button-warning p-button-icon-only"
-            (click)="openForm(product)">
-            Editar
-
-          </button>
-          <button
-            pButton
-            pButtonIcon="pi pi-trash"
-            class="p-button-sm p-button-danger p-button-icon-only"
-            (click)="deleteProduct(product.id)">
-            Eliminar
-
-          </button>
-        </p-buttonGroup>
+        {{ producto.descripcion }}
       </td>
+      <td>
+        {{ producto.fechaCreacion | date:'yyyy-MM-dd' }}
+      </td>
+
+      <td class="{{baseClass}}__actions">
+        <button pButton type="button" label="Editar" class="{{baseClass}}__btn {{baseClass}}__btn--edit"
+          (click)="openForm(producto)">
+        </button>
+
+        <button pButton type="button" label="Eliminar" class="{{baseClass}}__btn {{baseClass}}__btn--delete"
+          (click)="deleteProduct(producto.id)">
+        </button>
+      </td>
+
+    </tr>
+  </ng-template>
+  <ng-template #emptymessage>
+    <tr>
+      <td colspan="5">No existen lotes registradas.</td>
     </tr>
   </ng-template>
 </p-table>
 
-<app-product-form
-  [visible]="formVisible"
-  [product]="selectedProduct"
-  (save)="saveProduct($event)"
-  (close)="formVisible = false"
-></app-product-form>
+<app-product-form [visible]="formVisible" [product]="selectedProduct" (save)="saveProduct($event)"
+  (close)="formVisible = false"></app-product-form>

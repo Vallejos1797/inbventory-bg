@@ -29,7 +29,10 @@ export const appConfig: ApplicationConfig = {
     // Configuración global de PrimeNG
     providePrimeNG({
       theme: {
-        preset: Aura
+        preset: Aura,
+         options: {
+            darkModeSelector: false || 'none'
+        }
       }
     })
   ]

@@ -7,7 +7,6 @@ html, body {
   background-color: $color-white;
   padding: 0;
   width: 100%;
-  // height: 100vh;
 }
 
 html, body {
@@ -21,3 +20,75 @@ app-root {
   min-height: 100%;
 }
 
+.p-datatable-table-container {
+  height: 22.5rem !important;
+  background-color: white !important;
+}
+
+app-header {
+  background-color: $color-blue !important;
+}
+
+:root {
+  --magenta: #D2006E;
+  --white:   #FFFFFF;
+}
+
+
+.p-dialog-mask {
+  background: rgba(15, 23, 42, .35) !important; 
+  backdrop-filter: blur(3px) !important;
+}
+
+.p-confirmdialog.p-dialog {
+  border: 0 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 18px 40px rgba(17, 24, 39, .18) !important;
+}
+.p-confirmdialog .p-dialog-header { 
+  padding: 1px !important; 
+  border-bottom: 1px solid #f1f3f7 !important; 
+  font-weight: 800 !important; 
+  color: #111827 !important; 
+}
+.p-confirmdialog .p-dialog-content { padding: 18px 16px !important; color: #111827 !important; }
+.p-confirmdialog .p-dialog-footer { padding: 12px 16px !important; gap: 8px !important; }
+
+.p-confirmdialog .p-confirmdialog-accept-button.p-button,
+.p-confirmdialog .p-button.p-confirm-dialog-accept {
+  background: var(--magenta) !important;
+  color: var(--white) !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  min-width: 96px !important;
+  height: 40px !important;
+  padding: 0 16px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 14px rgba(210, 0, 110, .25) !important;
+  transition: background-color .2s, transform .2s !important;
+}
+.p-confirmdialog .p-confirmdialog-accept-button.p-button:hover,
+.p-confirmdialog .p-button.p-confirm-dialog-accept:hover {
+  background: #b1005a !important;
+  transform: translateY(-1px) !important;
+}
+
+.p-confirmdialog .p-confirmdialog-reject-button.p-button,
+.p-confirmdialog .p-button.p-confirm-dialog-reject {
+  background: var(--white) !important;
+  color: var(--magenta) !important;
+  border: 2px solid var(--magenta) !important;
+  border-radius: 10px !important;
+  min-width: 96px !important;
+  height: 40px !important;
+  padding: 0 16px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 14px rgba(17, 24, 39, .08) !important;
+  transition: background-color .2s, transform .2s, border-color .2s !important;
+}
+.p-confirmdialog .p-confirmdialog-reject-button.p-button:hover,
+.p-confirmdialog .p-button.p-confirm-dialog-reject:hover {
+  background: rgba(210, 0, 110, .06) !important;
+  transform: translateY(-1px) !important;
+}

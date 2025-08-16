@@ -1,22 +1,7 @@
+<p-toast></p-toast>
 <div class="{{baseClass}}">
   <div class="{{baseClass}}__panel">
     <h2 class="{{baseClass}}__title">Iniciar Sesión</h2>
-
-    <!-- <form class="{{baseClass}}__form" (ngSubmit)="onSubmit()">
-      <label class="{{baseClass}}__field">
-        <span class="{{baseClass}}__label">Usuario</span>
-        <input class="{{baseClass}}__input" type="text" placeholder="Escribe tu usuario" />
-      </label>
-
-      <label class="{{baseClass}}__field">
-        <span class="{{baseClass}}__label">Contraseña</span>
-        <input class="{{baseClass}}__input" type="password" placeholder="••••••••" />
-      </label>
-
-      <button type="submit" class="{{baseClass}}__btn {{baseClass}}__btn--continuar">
-        Continuar
-      </button>
-    </form> -->
     <form class="{{baseClass}}__form" [formGroup]="form" (ngSubmit)="onSubmit()">
   <label class="{{baseClass}}__field">
     <span class="{{baseClass}}__label">Usuario</span>

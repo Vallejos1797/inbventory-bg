@@ -1,0 +1,183 @@
+@import '../../../../../styles/variables';
+
+%actions-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.mb-3 { @extend %actions-right; }
+.products__actions { @extend %actions-right; }
+
+.mb-3 .p-button,
+.products__actions .p-button {
+  background-color: $color-magenta;
+  border: 0;
+  border-radius: 10px;
+  padding: .6rem 1rem;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(17, 24, 39, .10);
+  transition: background-color .2s, transform .2s, box-shadow .2s;
+
+  &:hover { background-color: darken($color-magenta, 6%); transform: translateY(-1px); }
+  &:active { transform: translateY(0); background-color: darken($color-magenta, 10%); }
+}
+
+.products__table { width: 100%; }
+
+:host ::ng-deep .products__table .p-datatable {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, .08);
+}
+
+:host ::ng-deep .products__table .p-datatable-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+:host ::ng-deep .products__table .p-datatable-thead > tr > th {
+  background: #ffffff;
+  color: #374151;
+  font-weight: 700;
+  border-bottom: 1px solid #eef0f4;
+  padding: 14px 16px;
+}
+
+:host ::ng-deep .products__table .p-datatable-tbody > tr > td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f3f7;
+  color: #111827;
+}
+
+:host ::ng-deep .products__table .p-datatable-tbody > tr:hover {
+  background: #fafbff;
+}
+
+:host ::ng-deep .products__table .p-datatable-thead > tr > th:last-child,
+:host ::ng-deep .products__table .p-datatable-tbody > tr > td:last-child {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.products__button-edit,
+.products__button-delete {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: 4px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+
+.products__button-edit:hover {
+  background: rgba($color-blue, .06);
+  border-color: rgba($color-blue, .35);
+  transform: translateY(-1px);
+}
+
+.products__button-delete:hover {
+  background: rgba($color-magenta, .06);
+  border-color: rgba($color-magenta, .35);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  :host ::ng-deep .products__table .p-datatable-thead > tr > th,
+  :host ::ng-deep .products__table .p-datatable-tbody > tr > td {
+    padding: 10px 12px;
+  }
+}
+
+.mb-3 .p-button,
+.products__actions .p-button {
+  background: #fff;
+  color: $color-magenta;
+  border: 2px solid $color-magenta;
+  border-radius: 10px;
+  padding: .55rem 1rem;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(17, 24, 39, .06);
+  transition: background-color .2s, color .2s, transform .2s, box-shadow .2s, border-color .2s;
+
+  .p-button-icon { color: currentColor; }
+
+  &:hover { background: rgba($color-magenta, .06); transform: translateY(-1px); }
+  &:active { background: rgba($color-magenta, .12); transform: translateY(0); }
+  &:focus  { box-shadow: 0 0 0 3px rgba($color-magenta, .18); }
+}
+
+.product__actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+:host ::ng-deep .product__btn.p-button {
+  border-radius: 10px;
+  height: 36px;
+  padding: 0 .85rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 6px 14px rgba(17, 24, 39, .06);
+  transition: background-color .2s, transform .2s, border-color .2s, box-shadow .2s;
+
+  .p-button-icon { color: currentColor; margin-right: .35rem; }
+  .p-button-label { letter-spacing: .1px; }
+}
+
+:host ::ng-deep .product__btn--edit.p-button {
+  background: #fff;
+  color: $color-magenta;
+  border: 2px solid $color-magenta;
+
+  &:hover { background: rgba($color-magenta, .06); transform: translateY(-1px); }
+  &:active { background: rgba($color-magenta, .12); transform: translateY(0); }
+  &:focus  { box-shadow: 0 0 0 3px rgba($color-magenta, .18); }
+}
+
+:host ::ng-deep .product__btn--delete.p-button {
+  background: $color-magenta;
+  color: $color-white;
+  border: 0;
+
+  &:hover { background: darken($color-magenta, 6%); transform: translateY(-1px); }
+  &:active { background: darken($color-magenta, 10%); transform: translateY(0); }
+  &:focus  { box-shadow: 0 0 0 3px rgba($color-magenta, .18); }
+}
+
+:host ::ng-deep .product__btn.p-button:focus,
+:host ::ng-deep .product__btn.p-button.p-focus,
+:host ::ng-deep .product__btn.p-button:focus:not(:focus-visible) {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+:host ::ng-deep .product__btn--edit.p-button:focus-visible {
+  box-shadow: 0 0 0 3px rgba($color-magenta, .22) !important;
+}
+:host ::ng-deep .product__btn--delete.p-button:focus-visible {
+  box-shadow: 0 0 0 3px rgba($color-magenta, .22) !important;
+}
+
+:host ::ng-deep .product__btn--edit.p-button:hover {
+  background: rgba($color-magenta, .06);
+  border-color: lighten($color-magenta, 6%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(17, 24, 39, .08);
+}
+
+:host ::ng-deep .product__btn--delete.p-button:hover {
+  background: darken($color-magenta, 6%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(210, 0, 110, .20);
+}
+
+:host ::ng-deep .product__btn { min-width: 104px; }
