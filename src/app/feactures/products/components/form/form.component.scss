@@ -1,0 +1,107 @@
+@import '../../../../../styles/variables';
+
+:host ::ng-deep .p-dialog-mask {
+  background: rgba(15, 23, 42, .35);
+  backdrop-filter: blur(4px);
+}
+
+:host ::ng-deep .product-dialog.p-dialog {
+  border: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(17, 24, 39, .18);
+}
+
+:host ::ng-deep .product-dialog .p-dialog-header {
+  padding: 10px 14px;
+  border-bottom: 1px solid #eef0f4;
+  font-weight: 800;
+  color: #111827;
+}
+
+:host ::ng-deep .product-dialog .p-dialog-content {
+  padding: 16px 14px 8px;
+  color: #111827;
+}
+
+:host ::ng-deep .product-dialog .p-inputtext {
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  transition: border-color .18s, box-shadow .18s;
+}
+
+:host ::ng-deep .product-dialog .p-inputtext:focus {
+  border-color: $color-magenta;
+  box-shadow: 0 0 0 3px rgba($color-magenta, .18);
+  outline: 0;
+}
+
+.product-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+:host ::ng-deep .product-dialog__btn.p-button {
+  border-radius: 10px;
+  height: 38px;
+  padding: 0 1rem;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(17, 24, 39, .06);
+  transition: background-color .18s, color .18s, border-color .18s, transform .12s, box-shadow .18s;
+
+  .p-button-icon { color: currentColor; margin-right: .35rem; }
+}
+
+:host ::ng-deep .product-dialog__btn--cancel.p-button {
+  background: #fff;
+  color: $color-magenta;
+  border: 2px solid $color-magenta;
+
+  &:hover { background: rgba($color-magenta, .06); transform: translateY(-1px); }
+  &:active { background: rgba($color-magenta, .12); transform: translateY(0); }
+  &:focus-visible { box-shadow: 0 0 0 3px rgba($color-magenta, .22); outline: 0; }
+}
+
+:host ::ng-deep .product-dialog__btn--save.p-button {
+  background: $color-magenta;
+  color: $color-white;
+  border: 0;
+
+  &:hover { background: darken($color-magenta, 6%); transform: translateY(-1px); }
+  &:active { background: darken($color-magenta, 10%); transform: translateY(0); }
+  &:focus-visible { box-shadow: 0 0 0 3px rgba($color-magenta, .22); outline: 0; }
+  &:disabled { opacity: .6; cursor: not-allowed; box-shadow: none; transform: none; }
+}
+
+
+/* dentro de tu mismo SCSS del dialog */
+:host ::ng-deep .product-dialog .p-fluid {
+  display: grid;
+  gap: 12px;
+}
+
+:host ::ng-deep .product-dialog .p-field {
+  display: grid;
+  grid-template-columns: 1fr;  /* label arriba, input abajo */
+  gap: 6px;
+  margin: 0;                   /* ya usamos el gap */
+}
+
+:host ::ng-deep .product-dialog .p-field label {
+  display: block;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+:host ::ng-deep .product-dialog .p-field .p-inputtext {
+  width: 100%;
+}
+
+:host ::ng-deep .product-dialog .p-error {
+  margin-top: 4px;
+  display: block;
+}

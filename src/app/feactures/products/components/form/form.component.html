@@ -2,6 +2,7 @@
   [(visible)]="visible"
   [modal]="true"
   [style]="{ width: '400px' }"
+  styleClass="product-dialog"
   header="{{ product ? 'Editar Producto' : 'Nuevo Producto' }}"
   (onHide)="onHide()"
 >
@@ -10,31 +11,25 @@
       <div class="p-field mb-3">
         <label for="nombre">Nombre</label>
         <input id="nombre" type="text" pInputText formControlName="nombre" />
-        <small *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="p-error">
-          Nombre requerido
-        </small>
+        <small *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="p-error">Nombre requerido</small>
       </div>
 
       <div class="p-field mb-3">
         <label for="descripcion">Descripción</label>
         <input id="descripcion" type="text" pInputText formControlName="descripcion" />
-        <small *ngIf="form.get('descripcion')?.invalid && form.get('descripcion')?.touched" class="p-error">
-          Descripción requerida
-        </small>
+        <small *ngIf="form.get('descripcion')?.invalid && form.get('descripcion')?.touched" class="p-error">Descripción requerida</small>
       </div>
 
       <div class="p-field mb-3">
         <label for="imagenUrl">URL de imagen</label>
         <input id="imagenUrl" type="text" pInputText formControlName="imagenUrl" />
-        <small *ngIf="form.get('imagenUrl')?.invalid && form.get('imagenUrl')?.touched" class="p-error">
-          Debe ser una URL válida
-        </small>
+        <small *ngIf="form.get('imagenUrl')?.invalid && form.get('imagenUrl')?.touched" class="p-error">Debe ser una URL válida</small>
       </div>
     </div>
 
-    <div class="flex justify-content-end mt-4">
-      <button pButton type="button" label="Cancelar" class="p-button-text" (click)="onHide()"></button>
-      <button pButton type="submit" label="Guardar" icon="pi pi-check" [disabled]="form.invalid"></button>
+    <div class="product-dialog__actions">
+      <button pButton type="button" label="Cancelar" class="product-dialog__btn product-dialog__btn--cancel" (click)="onHide()"></button>
+      <button pButton type="submit" label="Guardar" class="product-dialog__btn product-dialog__btn--save" [disabled]="form.invalid"></button>
     </div>
   </form>
 </p-dialog>

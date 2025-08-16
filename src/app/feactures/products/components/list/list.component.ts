@@ -59,18 +59,29 @@ export class ListComponent implements OnInit {
     });
   }
 
+  onCloseForm(): void {
+    this.formVisible = false;
+    this.selectedProduct = null;
+  }
+
   openForm(product?: Product): void {
-    this.selectedProduct = product || null;
+    this.selectedProduct = product ? { ...product } : null;
     this.formVisible = true;
   }
 
   saveProduct(data: Omit<Product, 'id' | 'fechaCreacion'>): void {
+    console.log('Datos del producto:', this.selectedProduct);
     if (this.selectedProduct) {
-      // Editar
-      this.api.updateProduct(this.selectedProduct.id, data).subscribe(() => {
+      const payload: Product = {
+        ...this.selectedProduct,
+        ...data,
+        id: this.selectedProduct.id
+      };
+      this.api.updateProduct(this.selectedProduct.id, payload).subscribe(() => {
         this.messageService.add({ severity: 'success', summary: 'Actualizado', detail: 'Producto actualizado' });
         this.loadProducts();
         this.formVisible = false;
+        this.onCloseForm();     
       });
     } else {
       // Crear
@@ -78,6 +89,7 @@ export class ListComponent implements OnInit {
         this.messageService.add({ severity: 'success', summary: 'Creado', detail: 'Producto creado' });
         this.loadProducts();
         this.formVisible = false;
+        this.onCloseForm();
       });
     }
   }
