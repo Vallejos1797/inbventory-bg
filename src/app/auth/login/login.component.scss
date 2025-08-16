@@ -1,8 +1,105 @@
-.login-container {
-  max-width: 400px;
-  margin: 5rem auto;
-  padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: white;
+@import '../../../styles/variables';
+
+.login {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  font-family: $font-primary;
+  background: #f7f8fb;
+
+  &__panel {
+    width: min(420px, 92vw);
+    padding: 28px;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #111827;
+    border: 1px solid #eef0f4;
+    box-shadow: 0 10px 30px rgba(17, 24, 39, .08);
+  }
+
+  &__title {
+    margin: 0 0 18px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  &__form {
+    display: grid;
+    gap: 16px;
+  }
+
+  &__field {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__label {
+    font-size: .9rem;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+
+    &::placeholder { color: #9ca3af; }
+
+    &:focus {
+      border-color: $color-blue;       
+      box-shadow: 0 0 0 3px rgba(22, 15, 65, .15); 
+      background: #ffffff;
+    }
+
+    &:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s, transform .2s, box-shadow .2s;
+
+    &:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    &--continuar {
+      color: $color-white;
+      background-color: $color-blue;          // #160F41
+      box-shadow: 0 6px 14px rgba(17, 24, 39, .12);
+
+      &:hover:not(:disabled) {
+        background-color: darken($color-blue, 6%);
+        transform: translateY(-1px);
+      }
+      &:active:not(:disabled) {
+        background-color: darken($color-blue, 10%);
+        transform: translateY(0);
+      }
+    }
+  }
+
+  @media (max-width: 420px) {
+    & { padding: 16px; }
+    &__panel { padding: 22px; }
+  }
 }

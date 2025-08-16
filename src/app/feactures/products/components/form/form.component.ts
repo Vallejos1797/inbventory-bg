@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { Product } from '../../core/models/product.interface';
+import { Product } from '../../../../core/models/product.interface';
+// import { Product } from '../../../core/models/product.interface';
 
 @Component({
   selector: 'app-product-form',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
-import {HeaderComponent} from './core/components/header/header.component';
+import {HeaderComponent} from './layouts/components/header/header.component';
 
 @Component({
   selector: 'app-root',

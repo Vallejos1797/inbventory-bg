@@ -3,18 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { LoginRequest, LoginResponse } from '../../auth/interfaces/auth.interfaces';
 import { RegisterRequest, RegisterResponse } from '../../auth/interfaces/user.interface';
+import { environment } from '../../../enviroments/environments';
+
+const AUTH_URL: string = `${environment.urlBase}Auth`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly baseUrl = 'http://localhost:5267/api/auth';
 
   constructor(private http: HttpClient) {}
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
+    console.log('Intentando iniciar sesión...', credentials);
     return this.http
-      .post<LoginResponse>(`${this.baseUrl}/login`, credentials)
+      .post<LoginResponse>(`${AUTH_URL}/login`, credentials)
       .pipe(
         tap(res => {
           console.log('llega...',res)
@@ -29,7 +32,7 @@ export class AuthService {
   }
 
   register(payload: RegisterRequest): Observable<RegisterResponse> {
-    return this.http.post<RegisterResponse>(`${this.baseUrl}/register`, payload);
+    return this.http.post<RegisterResponse>(`${AUTH_URL}/register`, payload);
   }
 
   logout(): void {

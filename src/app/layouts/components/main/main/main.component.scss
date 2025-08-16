@@ -1,0 +1,33 @@
+$color-bg: #f6f7fb;
+
+.main {
+  &__container {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr; // header fijo arriba, contenido flexible
+    background: $color-bg;
+  }
+
+  // Si quieres que el header quede pegado al top al hacer scroll:
+  // (asegúrate de que <app-header> tenga fondo)
+  ::ng-deep app-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  &__content {
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin-inline: auto;
+
+    // si alguna vista interna necesita ocupar todo:
+    display: block;
+  }
+}
+
+/* utilidades responsivas */
+@media (max-width: 768px) {
+  .main__content { padding: 14px; }
+}

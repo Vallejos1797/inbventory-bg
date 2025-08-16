@@ -20,6 +20,7 @@ import { PasswordModule } from 'primeng/password';
 })
 export class LoginComponent {
   form: FormGroup;
+  baseClass: string = 'login';
 
   constructor(
     private fb: FormBuilder,
@@ -35,16 +36,19 @@ export class LoginComponent {
 
   onSubmit(): void {
     if (this.form.invalid) return;
+    console.log('Formulario enviado:', this.form.value);
 
     const credentials: LoginRequest = this.form.value;
 
     this.authService.login(credentials).subscribe({
       next: () => {
         this.messageService.add({ severity: 'success', summary: 'Login exitoso', detail: 'Bienvenido' });
-        this.router.navigate(['/productos']);
+        this.router.navigate(['/main/products']);
+        console.log('Login exitoso');
       },
       error: () => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Credenciales inválidas' });
+        console.log('Login fallido');
       }
     });
   }

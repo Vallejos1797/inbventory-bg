@@ -5,10 +5,11 @@ import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-import { ApiService } from '../../core/services/api.service';
-import { Product } from '../../core/models/product.interface';
+// import { ApiService } from '../../../core/services/api.service';
+import { Product } from '../../../../core/models/product.interface';
 import { ProductFormComponent } from '../form/form.component';
 import {ButtonGroup} from 'primeng/buttongroup';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -34,7 +35,7 @@ export class ListComponent implements OnInit {
   selectedProduct: Product | null = null;
 
   constructor(
-    private api: ApiService,
+    private api: ProductService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService
   ) {}

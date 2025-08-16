@@ -3,5 +3,5 @@ export interface Product {
   nombre: string;
   descripcion: string;
   imagenUrl: string;
-  fechaCreacion: string; // ISO date string
+  fechaCreacion: string;
 }
